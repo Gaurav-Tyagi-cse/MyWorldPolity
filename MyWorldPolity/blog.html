@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Course Search</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    .course-card {
+      margin-top: 20px;
+    }
+    .course-card:hover {
+      background-color: #f8f9fa;
+    }
+  </style>
+</head>
+<body>
+  <div class="container mt-5">
+    <h2 class="text-center mb-4">Search for Course Codes</h2>
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <div class="input-group mb-3">
+          <input type="text" id="searchInput" class="form-control" placeholder="Enter course code...">
+          <div class="input-group-append">
+            <button class="btn btn-primary" type="button" onclick="searchCourse()">Search</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row" id="courseList">
+      <!-- Search results will be shown here -->
+    </div>
+  </div>
+
+  <!-- Bootstrap JS and dependencies -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+  <script>
+    const courses = [
+      { code: 'CSE101', name: '' },
+      { code: 'CSE102', name: 'Data Structures' },
+      { code: 'CSE103', name: 'Algorithms' },
+      { code: 'MTH101', name: '' },
+      { code: 'PHY101', name: 'Physics for Engineers' },
+    ];
+
+    function searchCourse() {
+      const input = document.getElementById('searchInput').value.toUpperCase();
+      const courseList = document.getElementById('courseList');
+      courseList.innerHTML = ''; // Clear previous results
+
+      const filteredCourses = courses.filter(course => 
+        course.code.toUpperCase().includes(input) || course.name.toUpperCase().includes(input)
+      );
+
+      if (filteredCourses.length > 0) {
+        filteredCourses.forEach(course => {
+          const courseCard = `
+            <div class="col-md-4 course-card">
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">${course.code}</h5>
+                  <p class="card-text">${course.name}</p>
+                </div>
+              </div>
+            </div>
+          `;
+          courseList.innerHTML += courseCard;
+        });
+      } else {
+        courseList.innerHTML = '<div class="col-12"><p>No courses found</p></div>';
+      }
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>D W M</title>
+
+    <style>
+
+ .whatsapp-icon {      
+width: 60px; /* Adjust width */
+height: 60px; /* Adjust height */
+object-fit: contain; /* Ensure aspect ratio is maintained */
+position: fixed;
+bottom: 20px;
+right: 20px;
+background-color: #25D366;
+color: white;
+border-radius: 50%;
+padding: 10px; /* Adjust padding to fit icon better */
+box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+cursor: pointer;
+z-index: 1000;
+display: flex; /* Center the image */
+align-items: center; /* Center vertically */
+justify-content: center; /* Center horizontally */
+margin-bottom: 40px;
+margin-right: 0px;
+
+}
+
+/* Hover effect */
+.whatsapp-icon:hover {
+background-color: #128C7E;
+}
+
+@media screen and (max-width:768px){
+
+.whatsapp-icon {
+
+     
+    width: 50px; /* Adjust width */
+    height: 50px; /* Adjust height */
+    object-fit: contain; /* Ensure aspect ratio is maintained */
+    position: fixed;
+    bottom: 20px;
+    
+    background-color: #25D366;
+    color: white;
+    border-radius: 50%;
+    padding: 10px; /* Adjust padding to fit icon better */
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    z-index: 1000;
+    display: flex; /* Center the image */
+    align-items: center; /* Center vertically */
+    justify-content: center; /* Center horizontally */
+    margin-bottom: 40px;
+   margin-right: -10px;
+    
+}
+}
+    </style>
+
+</head>
+<body>
+    
+<!---Whatapp integration-->
+
+<div class="whatsapp-icon " onclick="openWhatsAppChat()">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+  </div>
+
+    <!---Whatapp integration closed-->
+
+
+<script>
+
+function openWhatsAppChat() {
+    // Replace with your phone number in international format
+    var phoneNumber = "917088997171";  // Example: 91 for India, followed by the number
+    var message = "Hello, I'm interested in your services!";
+    var url = "https://api.whatsapp.com/send?phone=" + phoneNumber + "&text=" + encodeURIComponent(message);
+    window.open(url, "_blank");
+}
+
+    </script>
+
+</body>
+</html>
